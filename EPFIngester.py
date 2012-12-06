@@ -238,6 +238,7 @@ class Ingester(object):
         user=self.dbUser, 
         passwd=self.dbPassword, 
         db=self.dbName)
+        conn.autocommit(True)
         return conn
             
     
