@@ -238,6 +238,8 @@ class Ingester(object):
         user=self.dbUser, 
         passwd=self.dbPassword, 
         db=self.dbName)
+        conn.query('SET NAMES utf8mb4')
+        conn.store_result()
         conn.autocommit(True)
         return conn
             
