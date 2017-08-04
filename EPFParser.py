@@ -240,6 +240,10 @@ class Parser(object):
         if (rowString):
             self.latestRecordNum += 1 #update the record counter
             rec = self.splitRow(rowString)
+            if len(rec) > len(self.columnNames):
+                LOGGER.warning("Encounter row contains more columns than expected!. Splitted Row content: %s",
+                    json.dumps({self.columnNames[i]:rec[i] for i in xrange(0,len(self.columnNames))}, 
+					indent=4, ensure_ascii=False))
             rec = rec[:len(self.columnNames)] #if there are more data records than column names,
             #trim any surplus records via a slice
             
